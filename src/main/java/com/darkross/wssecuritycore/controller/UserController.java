@@ -47,4 +47,10 @@ public class UserController {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PatchMapping("/{id}/restore")
+    public ResponseEntity<UserResponseDto> restoreUser(@PathVariable Long id) {
+        UserResponseDto response = userService.restoreUser(id);
+        return ResponseEntity.ok(response);
+    }
 }

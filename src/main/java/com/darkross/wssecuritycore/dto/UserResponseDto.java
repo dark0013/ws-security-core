@@ -18,6 +18,8 @@ public class UserResponseDto {
     private String direccion;
     private String telefono;
     private String email;
+    private String username;
+    private String password;
     private Boolean estado;
     private String usuarioCreacion;
     private LocalDateTime fechaCreacion;

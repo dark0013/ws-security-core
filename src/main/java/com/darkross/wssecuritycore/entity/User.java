@@ -51,6 +51,16 @@ public class User {
     @NotBlank(message = "El email es obligatorio")
     private String email;
 
+    @Column(unique = true, nullable = false)
+    @NotBlank(message = "El username es obligatorio")
+    @Size(min = 3, max = 50, message = "El username debe tener entre 3 y 50 caracteres")
+    private String username;
+
+    @Column(nullable = false)
+    @NotBlank(message = "La contraseña es obligatoria")
+    @Size(min = 6, max = 255, message = "La contraseña debe tener entre 6 y 255 caracteres")
+    private String password;
+
     @Column(nullable = false)
     private Boolean estado = true;
 

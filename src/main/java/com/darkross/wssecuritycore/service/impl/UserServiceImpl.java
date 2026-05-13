@@ -29,6 +29,9 @@ public class UserServiceImpl implements UserService {
         if (userRepository.existsByEmail(requestDto.getEmail())) {
             throw new RuntimeException("El email ya está registrado");
         }
+        if (userRepository.existsByUsername(requestDto.getUsername())) {
+            throw new RuntimeException("El username ya está registrado");
+        }
 
         User user = userMapper.toEntity(requestDto);
         user = userRepository.save(user);
@@ -45,6 +48,9 @@ public class UserServiceImpl implements UserService {
         }
         if (!user.getEmail().equals(requestDto.getEmail()) && userRepository.existsByEmail(requestDto.getEmail())) {
             throw new RuntimeException("El email ya está registrado");
+        }
+        if (!user.getUsername().equals(requestDto.getUsername()) && userRepository.existsByUsername(requestDto.getUsername())) {
+            throw new RuntimeException("El username ya está registrado");
         }
 
         userMapper.updateEntityFromDto(requestDto, user);
@@ -74,5 +80,14 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
         user.setEstado(false);
         userRepository.save(user);
+    }
+
+    @Override
+    public UserResponseDto restoreUser(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        user.setEstado(true);
+        user = userRepository.save(user);
+        return userMapper.toResponseDto(user);
     }
 }

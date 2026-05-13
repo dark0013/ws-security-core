@@ -36,5 +36,13 @@ public class UserRequestDto {
     @NotBlank(message = "El email es obligatorio")
     private String email;
 
+    @NotBlank(message = "El username es obligatorio")
+    @Size(min = 3, max = 50, message = "El username debe tener entre 3 y 50 caracteres")
+    private String username;
+
+    @NotBlank(message = "La contraseña es obligatoria")
+    @Size(min = 6, max = 255, message = "La contraseña debe tener entre 6 y 255 caracteres")
+    private String password;
+
     private Boolean estado = true;
 }

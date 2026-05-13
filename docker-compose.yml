@@ -10,7 +10,7 @@ services:
       MYSQL_USER: ws_user
       MYSQL_PASSWORD: ws_password
     ports:
-      - "3315:3315"
+      - "3315:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     networks:

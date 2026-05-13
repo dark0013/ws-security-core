@@ -1,6 +1,7 @@
 package com.darkross.wssecuritycore.exception;
 
 import com.darkross.wssecuritycore.dto.ErrorResponseDto;
+import com.darkross.wssecuritycore.exception.User.UserException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;

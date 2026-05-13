@@ -1,4 +1,4 @@
-package com.darkross.wssecuritycore.exception;
+package com.darkross.wssecuritycore.exception.User;
 
 import org.springframework.http.HttpStatus;
 

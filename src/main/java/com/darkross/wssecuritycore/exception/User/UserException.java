@@ -1,24 +1,16 @@
 package com.darkross.wssecuritycore.exception.User;
 
-import org.springframework.http.HttpStatus;
 
-public abstract class UserException extends RuntimeException {
+import com.darkross.wssecuritycore.exception.BusinessException;
 
-    private final HttpStatus httpStatus;
-    private final String errorCode;
+public class UserException extends BusinessException {
 
-    public UserException(String message, HttpStatus httpStatus, String errorCode) {
-        super(message);
-        this.httpStatus = httpStatus;
-        this.errorCode = errorCode;
+    public UserException(String errorCode, String message) {
+        super(errorCode, message, null);
     }
 
-    public HttpStatus getHttpStatus() {
-        return httpStatus;
-    }
-
-    public String getErrorCode() {
-        return errorCode;
+    public UserException(String errorCode, String message, Throwable cause) {
+        super(errorCode, message, null);
+        initCause(cause);
     }
 }
-

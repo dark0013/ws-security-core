@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponseDto updateUser(Long id, UserRequestDto requestDto) {
         User user = userRepository.findById(id)
-                .orElseThrow(UserNotFoundException::new);
+                .orElseThrow(() -> new UserNotFoundException("Usuario no encontrado"));
 
         if (!user.getCedula().equals(requestDto.getCedula()) && userRepository.existsByCedula(requestDto.getCedula())) {
             throw new UserDuplicatedException("La cédula ya está registrada");
@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public UserResponseDto getUserById(Long id) {
         User user = userRepository.findById(id)
-                .orElseThrow(UserNotFoundException::new);
+                .orElseThrow(() -> new UserNotFoundException("Usuario no encontrado"));
         return userMapper.toResponseDto(user);
     }
 
@@ -90,7 +90,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(Long id) {
         User user = userRepository.findById(id)
-                .orElseThrow(UserNotFoundException::new);
+                .orElseThrow(() -> new UserNotFoundException("Usuario no encontrado"));
         user.setEstado(false);
         userRepository.save(user);
     }
@@ -98,7 +98,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponseDto restoreUser(Long id) {
         User user = userRepository.findById(id)
-                .orElseThrow(UserNotFoundException::new);
+                .orElseThrow(() -> new UserNotFoundException("Usuario no encontrado"));
         user.setEstado(true);
         user = userRepository.save(user);
         return userMapper.toResponseDto(user);

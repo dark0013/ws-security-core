@@ -1,7 +1,6 @@
 package com.darkross.wssecuritycore.exception;
 
 import com.darkross.wssecuritycore.dto.ErrorResponseDto;
-import com.darkross.wssecuritycore.exception.User.UserException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -16,8 +15,12 @@ import java.util.List;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(UserException.class)
-    public ResponseEntity<ErrorResponseDto> handleUserException(UserException ex, WebRequest request) {
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<ErrorResponseDto> handleBusinessException(
+            BusinessException ex,
+            WebRequest request
+    ) {
+
         ErrorResponseDto errorResponse = ErrorResponseDto.builder()
                 .errorCode(ex.getErrorCode())
                 .message(ex.getMessage())
@@ -68,4 +71,3 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
-

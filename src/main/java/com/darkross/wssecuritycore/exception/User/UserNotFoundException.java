@@ -1,15 +1,16 @@
 package com.darkross.wssecuritycore.exception.User;
 
+import com.darkross.wssecuritycore.exception.BusinessException;
 import org.springframework.http.HttpStatus;
 
-public class UserNotFoundException extends UserException {
+public class UserNotFoundException extends BusinessException {
 
     public UserNotFoundException(String message) {
-        super(message, HttpStatus.NOT_FOUND, "USER_NOT_FOUND");
+
+        super("USER_NOT_FOUND", message, HttpStatus.NOT_FOUND);
     }
 
     public UserNotFoundException() {
-        super("Usuario no encontrado", HttpStatus.NOT_FOUND, "USER_NOT_FOUND");
+        super("USER_NOT_FOUND", "Usuario no encontrado", HttpStatus.NOT_FOUND);
     }
 }
-

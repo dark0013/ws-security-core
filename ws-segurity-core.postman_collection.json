@@ -38,7 +38,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"cedula\": \"1723456789\",\r\n  \"nombres\": \"Alain Roberto\",\r\n  \"apellidos\": \"Campoverde Flores\",\r\n  \"direccion\": \"Quito, Ecuador\",\r\n  \"telefono\": \"0998765432\",\r\n  \"email\": \"alain@example.com\",\r\n  \"estado\": true\r\n}",
+              "raw": "{\r\n  \"cedula\": \"1723456789\",\r\n  \"nombres\": \"Alain Roberto\",\r\n  \"apellidos\": \"Campoverde Flores\",\r\n  \"direccion\": \"Quito, Ecuador\",\r\n  \"telefono\": \"0998765432\",\r\n  \"email\": \"alain@example.com\",\r\n  \"username\":\"aacs\",\r\n  \"password\":\"xksldofg\",\r\n  \"estado\": true\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -71,7 +71,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"cedula\": \"1723456789\",\r\n  \"nombres\": \"Alain Robertx\",\r\n  \"apellidos\": \"Campoverde Flores\",\r\n  \"direccion\": \"Quito, Ecuador\",\r\n  \"telefono\": \"0998765432\",\r\n  \"email\": \"alain@example.com\",\r\n  \"estado\": true\r\n}",
+              "raw": "{\r\n  \"cedula\": \"1723456789\",\r\n  \"nombres\": \"Alain Roberto\",\r\n  \"apellidos\": \"Campoverde Flores\",\r\n  \"direccion\": \"Quito, Ecuador\",\r\n  \"telefono\": \"0998765432\",\r\n  \"email\": \"alain@example.com\",\r\n  \"username\":\"aacs\",\r\n  \"password\":\"xksldofg\",\r\n  \"estado\": true\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -115,6 +115,161 @@
                 "v1",
                 "users",
                 "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "active user",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5562/api/v1/users/1/restore",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5562",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "1",
+                "restore"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Rol",
+      "item": [
+        {
+          "name": "consultar roles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5562/api/v1/roles",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5562",
+              "path": [
+                "api",
+                "v1",
+                "roles"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "crear roles",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"rol\":\"OPERADOR\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5562/api/v1/roles",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5562",
+              "path": [
+                "api",
+                "v1",
+                "roles"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "actualizarw Request",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"rol\":\"CAJERO\",\r\n    \"estado\":true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5562/api/v1/roles/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5562",
+              "path": [
+                "api",
+                "v1",
+                "roles",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "inactivar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5562/api/v1/roles/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5562",
+              "path": [
+                "api",
+                "v1",
+                "roles",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ACTIVAR",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5562/api/v1/roles/1/restore",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5562",
+              "path": [
+                "api",
+                "v1",
+                "roles",
+                "1",
+                "restore"
               ]
             }
           },

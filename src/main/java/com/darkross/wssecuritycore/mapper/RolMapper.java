@@ -1,7 +1,7 @@
 package com.darkross.wssecuritycore.mapper;
 
-import com.darkross.wssecuritycore.dto.RolRequestDto;
-import com.darkross.wssecuritycore.dto.RolResponseDto;
+import com.darkross.wssecuritycore.dto.rol.RolRequestDto;
+import com.darkross.wssecuritycore.dto.rol.RolResponseDto;
 import com.darkross.wssecuritycore.entity.Rol;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

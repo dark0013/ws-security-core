@@ -1,7 +1,7 @@
 package com.darkross.wssecuritycore.service.impl;
 
-import com.darkross.wssecuritycore.dto.UserRequestDto;
-import com.darkross.wssecuritycore.dto.UserResponseDto;
+import com.darkross.wssecuritycore.dto.user.UserRequestDto;
+import com.darkross.wssecuritycore.dto.user.UserResponseDto;
 import com.darkross.wssecuritycore.entity.User;
 import com.darkross.wssecuritycore.exception.User.UserDuplicatedException;
 import com.darkross.wssecuritycore.exception.User.UserNotFoundException;

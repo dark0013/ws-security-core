@@ -1,7 +1,7 @@
 package com.darkross.wssecuritycore.mapper;
 
-import com.darkross.wssecuritycore.dto.UserRequestDto;
-import com.darkross.wssecuritycore.dto.UserResponseDto;
+import com.darkross.wssecuritycore.dto.user.UserRequestDto;
+import com.darkross.wssecuritycore.dto.user.UserResponseDto;
 import com.darkross.wssecuritycore.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

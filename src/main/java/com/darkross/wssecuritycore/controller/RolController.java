@@ -1,7 +1,7 @@
 package com.darkross.wssecuritycore.controller;
 
-import com.darkross.wssecuritycore.dto.RolRequestDto;
-import com.darkross.wssecuritycore.dto.RolResponseDto;
+import com.darkross.wssecuritycore.dto.rol.RolRequestDto;
+import com.darkross.wssecuritycore.dto.rol.RolResponseDto;
 import com.darkross.wssecuritycore.service.RolService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

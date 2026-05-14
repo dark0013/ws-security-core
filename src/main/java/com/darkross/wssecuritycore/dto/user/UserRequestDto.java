@@ -1,4 +1,4 @@
-package com.darkross.wssecuritycore.dto;
+package com.darkross.wssecuritycore.dto.user;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

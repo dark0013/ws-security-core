@@ -1,7 +1,7 @@
 package com.darkross.wssecuritycore.service;
 
-import com.darkross.wssecuritycore.dto.UserRequestDto;
-import com.darkross.wssecuritycore.dto.UserResponseDto;
+import com.darkross.wssecuritycore.dto.user.UserRequestDto;
+import com.darkross.wssecuritycore.dto.user.UserResponseDto;
 
 import java.util.List;
 

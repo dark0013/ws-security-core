@@ -1,4 +1,4 @@
-package com.darkross.wssecuritycore.dto;
+package com.darkross.wssecuritycore.dto.rol;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,17 +9,10 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserResponseDto {
+public class RolResponseDto {
 
     private Long id;
-    private String cedula;
-    private String nombres;
-    private String apellidos;
-    private String direccion;
-    private String telefono;
-    private String email;
-    private String username;
-    private String password;
+    private String rol;
     private Boolean estado;
     private String usuarioCreacion;
     private LocalDateTime fechaCreacion;

@@ -1,7 +1,7 @@
 package com.darkross.wssecuritycore.controller;
 
-import com.darkross.wssecuritycore.dto.UserRequestDto;
-import com.darkross.wssecuritycore.dto.UserResponseDto;
+import com.darkross.wssecuritycore.dto.user.UserRequestDto;
+import com.darkross.wssecuritycore.dto.user.UserResponseDto;
 import com.darkross.wssecuritycore.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

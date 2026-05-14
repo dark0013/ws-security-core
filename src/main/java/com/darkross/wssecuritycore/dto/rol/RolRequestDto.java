@@ -1,4 +1,4 @@
-package com.darkross.wssecuritycore.dto;
+package com.darkross.wssecuritycore.dto.rol;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

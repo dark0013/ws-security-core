@@ -1,7 +1,7 @@
 package com.darkross.wssecuritycore.service.impl;
 
-import com.darkross.wssecuritycore.dto.RolRequestDto;
-import com.darkross.wssecuritycore.dto.RolResponseDto;
+import com.darkross.wssecuritycore.dto.rol.RolRequestDto;
+import com.darkross.wssecuritycore.dto.rol.RolResponseDto;
 import com.darkross.wssecuritycore.entity.Rol;
 import com.darkross.wssecuritycore.exception.Rol.RolDuplicatedException;
 import com.darkross.wssecuritycore.exception.Rol.RolNotFoundException;

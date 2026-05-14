@@ -8,6 +8,8 @@ import com.darkross.wssecuritycore.exception.User.UserNotFoundException;
 import com.darkross.wssecuritycore.mapper.UserMapper;
 import com.darkross.wssecuritycore.repository.UserRepository;
 import com.darkross.wssecuritycore.service.UserService;
+import com.darkross.wssecuritycore.service.EmailService;
+import com.darkross.wssecuritycore.util.PasswordUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +24,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final EmailService emailService;
 
     @Override
     public UserResponseDto createUser(UserRequestDto requestDto) {
@@ -35,8 +38,16 @@ public class UserServiceImpl implements UserService {
             throw new UserDuplicatedException("El username ya está registrado");
         }
 
+        // Generar contraseña aleatoria y hashearla con MD5
+        PasswordUtils.PasswordResult passwordResult = PasswordUtils.generateAndHashPassword();
+
         User user = userMapper.toEntity(requestDto);
+        user.setPassword(passwordResult.getHashedPassword()); // Guardar contraseña hasheada
         user = userRepository.save(user);
+
+        // Enviar email con credenciales (contraseña original)
+        emailService.sendWelcomeEmail(user.getEmail(), user.getUsername(), passwordResult.getRawPassword());
+
         return userMapper.toResponseDto(user);
     }
 

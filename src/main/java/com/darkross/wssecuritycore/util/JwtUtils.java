@@ -15,53 +15,46 @@ import java.util.Date;
 @Slf4j
 public class JwtUtils {
 
-    @Value("${app.jwt.secret:miClaveSecretaParaJwtQueDebeSerMuyLargaYComplejaParaSeguridad}")
+    @Value("${app.jwt.secret:12345678901234567890123456789012}")
     private String jwtSecret;
 
-    @Value("${app.jwt.expiration:86400000}") // 24 horas por defecto
+    @Value("${app.jwt.expiration:86400000}")
     private int jwtExpirationMs;
 
-    private Key getSigningKey() {
+    private Key key() {
         return Keys.hmacShaKeyFor(jwtSecret.getBytes());
     }
 
     public String generateToken(Authentication authentication) {
-        UserDetails userPrincipal = (UserDetails) authentication.getPrincipal();
+        UserDetails user = (UserDetails) authentication.getPrincipal();
 
         return Jwts.builder()
-                .setSubject(userPrincipal.getUsername())
+                .setSubject(user.getUsername())
                 .setIssuedAt(new Date())
-                .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
-                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+                .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
+                .signWith(key(), SignatureAlgorithm.HS256)
                 .compact();
     }
 
-    public String getUsernameFromJwtToken(String token) {
+    public String getUsername(String token) {
         return Jwts.parserBuilder()
-                .setSigningKey(getSigningKey())
+                .setSigningKey(key())
                 .build()
                 .parseClaimsJws(token)
                 .getBody()
                 .getSubject();
     }
 
-    public boolean validateJwtToken(String authToken) {
+    public boolean validate(String token) {
         try {
             Jwts.parserBuilder()
-                .setSigningKey(getSigningKey())
-                .build()
-                .parseClaimsJws(authToken);
+                    .setSigningKey(key())
+                    .build()
+                    .parseClaimsJws(token);
             return true;
-        } catch (MalformedJwtException e) {
-            log.error("Token JWT inválido: {}", e.getMessage());
-        } catch (ExpiredJwtException e) {
-            log.error("Token JWT expirado: {}", e.getMessage());
-        } catch (UnsupportedJwtException e) {
-            log.error("Token JWT no soportado: {}", e.getMessage());
-        } catch (IllegalArgumentException e) {
-            log.error("JWT claims string está vacío: {}", e.getMessage());
+        } catch (Exception e) {
+            log.error("JWT error: {}", e.getMessage());
+            return false;
         }
-
-        return false;
     }
 }

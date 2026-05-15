@@ -2,6 +2,7 @@ package com.darkross.wssecuritycore.service.impl;
 
 import com.darkross.wssecuritycore.dto.auth.LoginRequestDto;
 import com.darkross.wssecuritycore.dto.auth.LoginResponseDto;
+import com.darkross.wssecuritycore.dto.auth.LoginRoleDto;
 import com.darkross.wssecuritycore.entity.User;
 import com.darkross.wssecuritycore.repository.UserRepository;
 import com.darkross.wssecuritycore.repository.UsuarioRolRepository;
@@ -82,15 +83,19 @@ public class AuthServiceImpl implements AuthService {
 
             log.debug("Usuario encontrado en BD: {}", user.getUsername());
 
-            List<String> roles = usuarioRolRepository.findByUsuario(user)
+            List<LoginRoleDto> roles = usuarioRolRepository.findByUsuario(user)
                     .stream()
                     .filter(ur -> ur.getEstado())
-                    .map(ur -> ur.getRol().getRol())
+                    .map(ur -> new LoginRoleDto(ur.getRol().getId(), ur.getRol().getRol()))
                     .collect(Collectors.toList());
 
             log.debug("Roles obtenidos para usuario {}: {}",
                     user.getUsername(),
                     roles);
+
+            LoginRoleDto firstRole = roles.isEmpty() ? null : roles.get(0);
+            Long idRolRol = firstRole != null ? firstRole.getId() : null;
+            String descripcionRol = firstRole != null ? firstRole.getDescripcion() : null;
 
             return new LoginResponseDto(
                     jwt,
@@ -100,7 +105,8 @@ public class AuthServiceImpl implements AuthService {
                     user.getEmail(),
                     user.getNombres(),
                     user.getApellidos(),
-                    roles
+                    idRolRol,
+                    descripcionRol
             );
 
         } catch (Exception e) {

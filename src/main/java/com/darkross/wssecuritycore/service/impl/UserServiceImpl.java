@@ -2,15 +2,20 @@ package com.darkross.wssecuritycore.service.impl;
 
 import com.darkross.wssecuritycore.dto.user.UserRequestDto;
 import com.darkross.wssecuritycore.dto.user.UserResponseDto;
+import com.darkross.wssecuritycore.dto.usuariorol.UsuarioRolRequestDto;
 import com.darkross.wssecuritycore.entity.User;
+import com.darkross.wssecuritycore.entity.Rol;
 import com.darkross.wssecuritycore.exception.User.UserDuplicatedException;
 import com.darkross.wssecuritycore.exception.User.UserNotFoundException;
 import com.darkross.wssecuritycore.mapper.UserMapper;
+import com.darkross.wssecuritycore.repository.RolRepository;
 import com.darkross.wssecuritycore.repository.UserRepository;
 import com.darkross.wssecuritycore.service.UserService;
 import com.darkross.wssecuritycore.service.EmailService;
+import com.darkross.wssecuritycore.service.UsuarioRolService;
 import com.darkross.wssecuritycore.util.PasswordUtils;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,11 +25,14 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final EmailService emailService;
+    private final UsuarioRolService usuarioRolService;
+    private final RolRepository rolRepository;
 
     @Override
     public UserResponseDto createUser(UserRequestDto requestDto) {
@@ -38,12 +46,30 @@ public class UserServiceImpl implements UserService {
             throw new UserDuplicatedException("El username ya está registrado");
         }
 
-        // Generar contraseña aleatoria y hashearla con MD5
+        // Generar contraseña aleatoria y hashearla con BCrypt
         PasswordUtils.PasswordResult passwordResult = PasswordUtils.generateAndHashPassword();
 
         User user = userMapper.toEntity(requestDto);
         user.setPassword(passwordResult.getHashedPassword()); // Guardar contraseña hasheada
         user = userRepository.save(user);
+
+        // Asignar rol por defecto "USER" al nuevo usuario
+        try {
+            // Buscar rol por defecto "USER"
+            Rol rolPorDefecto = rolRepository.findByRol("USER")
+                    .orElseThrow(() -> new RuntimeException("Rol USER no encontrado en el sistema"));
+
+            UsuarioRolRequestDto usuarioRolRequest = new UsuarioRolRequestDto();
+            usuarioRolRequest.setUsuarioId(user.getId());
+            usuarioRolRequest.setRolId(rolPorDefecto.getId());
+            usuarioRolRequest.setEstado(true);
+
+            usuarioRolService.createUsuarioRol(usuarioRolRequest);
+            log.info("Rol USER asignado automáticamente al usuario: {}", user.getUsername());
+        } catch (Exception e) {
+            log.error("Error al asignar rol por defecto al usuario {}: {}", user.getUsername(), e.getMessage());
+            // No lanzamos excepción para no impedir la creación del usuario
+        }
 
         // Enviar email con credenciales (contraseña original)
         emailService.sendWelcomeEmail(user.getEmail(), user.getUsername(), passwordResult.getRawPassword());

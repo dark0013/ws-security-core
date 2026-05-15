@@ -18,6 +18,9 @@ public class ErrorCodeMapper {
             case "USUARIO_ROL_NOT_FOUND" -> HttpStatus.NOT_FOUND;
             case "USUARIO_ROL_ALREADY_EXISTS" -> HttpStatus.CONFLICT;
 
+            // Auth errors
+            case "AUTH_ERROR" -> HttpStatus.UNAUTHORIZED;
+
             // Product errors
             case "PRODUCT_NOT_FOUND" -> HttpStatus.NOT_FOUND;
             case "PRODUCT_ALREADY_EXISTS" -> HttpStatus.CONFLICT;
@@ -44,6 +47,10 @@ public class ErrorCodeMapper {
     public static class UsuarioRol {
         public static final String NOT_FOUND = "USUARIO_ROL_NOT_FOUND";
         public static final String ALREADY_EXISTS = "USUARIO_ROL_ALREADY_EXISTS";
+    }
+
+    public static class Auth {
+        public static final String ERROR = "AUTH_ERROR";
     }
 
     public static class Product {

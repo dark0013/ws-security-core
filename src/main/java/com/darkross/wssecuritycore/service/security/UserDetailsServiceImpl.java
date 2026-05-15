@@ -1,4 +1,4 @@
-package com.darkross.wssecuritycore.service;
+package com.darkross.wssecuritycore.service.security;
 
 import com.darkross.wssecuritycore.entity.User;
 import com.darkross.wssecuritycore.repository.UserRepository;

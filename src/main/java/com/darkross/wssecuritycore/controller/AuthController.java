@@ -3,7 +3,7 @@ package com.darkross.wssecuritycore.controller;
 import com.darkross.wssecuritycore.dto.auth.LoginRequestDto;
 import com.darkross.wssecuritycore.dto.auth.LoginResponseDto;
 import com.darkross.wssecuritycore.exception.AuthException;
-import com.darkross.wssecuritycore.service.AuthService;
+import com.darkross.wssecuritycore.service.auth.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

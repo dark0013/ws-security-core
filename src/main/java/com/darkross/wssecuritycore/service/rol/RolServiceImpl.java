@@ -1,4 +1,4 @@
-package com.darkross.wssecuritycore.service.impl;
+package com.darkross.wssecuritycore.service.rol;
 
 import com.darkross.wssecuritycore.dto.rol.RolRequestDto;
 import com.darkross.wssecuritycore.dto.rol.RolResponseDto;
@@ -7,7 +7,6 @@ import com.darkross.wssecuritycore.exception.Rol.RolDuplicatedException;
 import com.darkross.wssecuritycore.exception.Rol.RolNotFoundException;
 import com.darkross.wssecuritycore.mapper.RolMapper;
 import com.darkross.wssecuritycore.repository.RolRepository;
-import com.darkross.wssecuritycore.service.RolService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

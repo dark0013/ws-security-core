@@ -1,4 +1,4 @@
-package com.darkross.wssecuritycore.service.impl;
+package com.darkross.wssecuritycore.service.auth;
 
 import com.darkross.wssecuritycore.dto.auth.LoginRequestDto;
 import com.darkross.wssecuritycore.dto.auth.LoginResponseDto;

@@ -1,4 +1,4 @@
-package com.darkross.wssecuritycore.service.impl;
+package com.darkross.wssecuritycore.service.auth;
 
 import com.darkross.wssecuritycore.dto.auth.LoginRequestDto;
 import com.darkross.wssecuritycore.dto.auth.LoginResponseDto;
@@ -6,7 +6,6 @@ import com.darkross.wssecuritycore.dto.auth.LoginRoleDto;
 import com.darkross.wssecuritycore.entity.User;
 import com.darkross.wssecuritycore.repository.UserRepository;
 import com.darkross.wssecuritycore.repository.UsuarioRolRepository;
-import com.darkross.wssecuritycore.service.AuthService;
 import com.darkross.wssecuritycore.util.JwtUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package com.darkross.wssecuritycore.service;
+package com.darkross.wssecuritycore.service.user;
 
 import com.darkross.wssecuritycore.dto.user.UserRequestDto;
 import com.darkross.wssecuritycore.dto.user.UserResponseDto;

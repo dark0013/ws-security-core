@@ -1,4 +1,4 @@
-package com.darkross.wssecuritycore.service;
+package com.darkross.wssecuritycore.service.userRol;
 
 import com.darkross.wssecuritycore.dto.usuariorol.UsuarioRolRequestDto;
 import com.darkross.wssecuritycore.dto.usuariorol.UsuarioRolResponseDto;

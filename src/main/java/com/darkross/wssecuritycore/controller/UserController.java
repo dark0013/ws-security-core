@@ -2,7 +2,7 @@ package com.darkross.wssecuritycore.controller;
 
 import com.darkross.wssecuritycore.dto.user.UserRequestDto;
 import com.darkross.wssecuritycore.dto.user.UserResponseDto;
-import com.darkross.wssecuritycore.service.UserService;
+import com.darkross.wssecuritycore.service.user.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

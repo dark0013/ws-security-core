@@ -1,4 +1,4 @@
-package com.darkross.wssecuritycore.service.impl;
+package com.darkross.wssecuritycore.service.user;
 
 import com.darkross.wssecuritycore.dto.user.UserRequestDto;
 import com.darkross.wssecuritycore.dto.user.UserResponseDto;
@@ -10,9 +10,8 @@ import com.darkross.wssecuritycore.exception.User.UserNotFoundException;
 import com.darkross.wssecuritycore.mapper.UserMapper;
 import com.darkross.wssecuritycore.repository.RolRepository;
 import com.darkross.wssecuritycore.repository.UserRepository;
-import com.darkross.wssecuritycore.service.UserService;
-import com.darkross.wssecuritycore.service.EmailService;
-import com.darkross.wssecuritycore.service.UsuarioRolService;
+import com.darkross.wssecuritycore.service.email.EmailService;
+import com.darkross.wssecuritycore.service.userRol.UsuarioRolService;
 import com.darkross.wssecuritycore.util.PasswordUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

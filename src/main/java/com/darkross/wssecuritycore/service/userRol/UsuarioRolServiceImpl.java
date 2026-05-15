@@ -1,4 +1,4 @@
-package com.darkross.wssecuritycore.service.impl;
+package com.darkross.wssecuritycore.service.userRol;
 
 import com.darkross.wssecuritycore.dto.usuariorol.UsuarioRolRequestDto;
 import com.darkross.wssecuritycore.dto.usuariorol.UsuarioRolResponseDto;
@@ -13,7 +13,6 @@ import com.darkross.wssecuritycore.mapper.UsuarioRolMapper;
 import com.darkross.wssecuritycore.repository.RolRepository;
 import com.darkross.wssecuritycore.repository.UserRepository;
 import com.darkross.wssecuritycore.repository.UsuarioRolRepository;
-import com.darkross.wssecuritycore.service.UsuarioRolService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,4 +1,4 @@
-package com.darkross.wssecuritycore.service;
+package com.darkross.wssecuritycore.service.email;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

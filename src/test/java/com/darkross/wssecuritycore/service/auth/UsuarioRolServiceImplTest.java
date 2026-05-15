@@ -1,4 +1,4 @@
-package com.darkross.wssecuritycore.service.impl;
+package com.darkross.wssecuritycore.service.auth;
 
 import com.darkross.wssecuritycore.dto.usuariorol.UsuarioRolRequestDto;
 import com.darkross.wssecuritycore.dto.usuariorol.UsuarioRolResponseDto;
@@ -13,6 +13,7 @@ import com.darkross.wssecuritycore.mapper.UsuarioRolMapper;
 import com.darkross.wssecuritycore.repository.RolRepository;
 import com.darkross.wssecuritycore.repository.UserRepository;
 import com.darkross.wssecuritycore.repository.UsuarioRolRepository;
+import com.darkross.wssecuritycore.service.userRol.UsuarioRolServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,7 +22,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,0 +1,274 @@
+{
+  "info": {
+    "name": "UsuarioRol CRUD",
+    "description": "Ejemplos de prueba para el CRUD de UsuarioRol con validaciones",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Crear UsuarioRol - Exitoso",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuarioId\": 1,\n  \"rolId\": 1,\n  \"estado\": true\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuario-roles",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "usuario-roles"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Crear UsuarioRol - Usuario No Existe (400 USER_NOT_FOUND)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuarioId\": 99999,\n  \"rolId\": 1,\n  \"estado\": true\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuario-roles",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "usuario-roles"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Crear UsuarioRol - Rol No Existe (404 ROL_NOT_FOUND)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuarioId\": 1,\n  \"rolId\": 99999,\n  \"estado\": true\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuario-roles",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "usuario-roles"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Crear UsuarioRol - Duplicado (409 USUARIO_ROL_ALREADY_EXISTS)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuarioId\": 1,\n  \"rolId\": 1,\n  \"estado\": true\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuario-roles",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "usuario-roles"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Actualizar UsuarioRol - Usuario No Existe (404)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuarioId\": 99999,\n  \"rolId\": 1,\n  \"estado\": true\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuario-roles/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "usuario-roles", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Actualizar UsuarioRol - Rol No Existe (404)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuarioId\": 1,\n  \"rolId\": 99999,\n  \"estado\": true\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuario-roles/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "usuario-roles", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener Roles por Usuario - Usuario Existe",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuario-roles/usuario/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "usuario-roles", "usuario", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener Roles por Usuario - Usuario No Existe (404)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuario-roles/usuario/99999",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "usuario-roles", "usuario", "99999"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener Usuarios por Rol - Rol Existe",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuario-roles/rol/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "usuario-roles", "rol", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener Usuarios por Rol - Rol No Existe (404)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuario-roles/rol/99999",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "usuario-roles", "rol", "99999"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener todos los UsuarioRol",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuario-roles",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "usuario-roles"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener UsuarioRol por ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuario-roles/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "usuario-roles", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Eliminar UsuarioRol",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuario-roles/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "usuario-roles", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Restaurar UsuarioRol",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuario-roles/1/restore",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "usuario-roles", "1", "restore"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
+
